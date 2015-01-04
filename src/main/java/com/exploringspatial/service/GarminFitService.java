@@ -105,7 +105,7 @@ public class GarminFitService {
         final SimpleFeatureTypeBuilder simpleFeatureType = new SimpleFeatureTypeBuilder();
         simpleFeatureType.add("geom", LineString.class, DefaultGeographicCRS.WGS84);
         simpleFeatureType.add("name", String.class);
-        simpleFeatureType.add("activityId", Double.class);
+        simpleFeatureType.add("activityId", Long.class);
         simpleFeatureType.setName("activity");
         simpleFeatureType.add("activityName", String.class);
         simpleFeatureType.add("sport", String.class);

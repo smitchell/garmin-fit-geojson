@@ -10,7 +10,7 @@ import java.util.List;
  * @author Steve Mitchell
  */
 public class FitActivity {
-    private Double activityId;
+    private Long activityId;
     private String name;
     private String description;
     /**
@@ -26,11 +26,11 @@ public class FitActivity {
     private Double totalSeconds;
     private List<Coordinate> polyline = new ArrayList<Coordinate>();
 
-    public Double getActivityId() {
+    public Long getActivityId() {
         return activityId;
     }
 
-    public void setActivityId(final Double activityId) {
+    public void setActivityId(final Long activityId) {
         this.activityId = activityId;
     }
 

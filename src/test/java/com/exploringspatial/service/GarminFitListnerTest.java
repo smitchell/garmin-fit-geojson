@@ -77,7 +77,7 @@ public class GarminFitListnerTest {
             final GarminFitService garminFitService = new GarminFitService();
             final FitActivity fitActivity = garminFitService.decodeFitFile(in);
             // Add some stuff not contained in the FIT file.
-            fitActivity.setActivityId(155155867D);
+            fitActivity.setActivityId(155155867L);
             fitActivity.setName("2012 Little Rock Marathon");
             garminFitService.writeFeatureGeoJSON(fitActivity, out);
         } finally {
