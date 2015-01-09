@@ -107,7 +107,7 @@ public class GarminFitService {
         simpleFeatureType.add("name", String.class);
         simpleFeatureType.add("activityId", Long.class);
         simpleFeatureType.setName("activity");
-        simpleFeatureType.add("activityName", String.class);
+        simpleFeatureType.add("name", String.class);
         simpleFeatureType.add("sport", String.class);
         simpleFeatureType.add("startTime", String.class);
         simpleFeatureType.add("totalMeters", Double.class);
@@ -129,6 +129,7 @@ public class GarminFitService {
         final SimpleFeatureType featureSchema = getFeatureSchema();
         final SimpleFeatureBuilder builder = new SimpleFeatureBuilder(featureSchema);
         builder.set("activityId", fitActivity.getActivityId());
+        builder.set("name", fitActivity.getName());
         builder.set("sport", fitActivity.getSport());
         builder.set("startTime", fitActivity.getStartTime());
         builder.set("totalMeters", fitActivity.getTotalMeters());
@@ -141,7 +142,7 @@ public class GarminFitService {
         builder.set("minLon", boundingBox[0].x);
         builder.set("maxLat", boundingBox[1].y);
         builder.set("maxLon", boundingBox[1].x);
-        return builder.buildFeature("0");
+        return builder.buildFeature(fitActivity.getActivityId().toString());
     }
 
     public void writeFeatureGeoJSON(final FitActivity fitActivity, final OutputStream out) throws FactoryException, IOException {
@@ -149,6 +150,8 @@ public class GarminFitService {
         final FeatureJSON fj = new FeatureJSON();
         try {
             fj.writeFeature(feature, out);
+        } catch(RuntimeException e) {
+            log.error(e);
         } finally {
             try {
                 out.close();
